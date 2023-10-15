@@ -25,7 +25,7 @@ const createRequest = (options = {}) => {
     xhr.open('GET', urlGet, true);
     xhr.responseType = 'json';
     xhr.send();
-  } else if (options.method === 'POST') {
+  } else {
     const formData = new FormData;
 
     formData.append('mail', options.data.mail);
