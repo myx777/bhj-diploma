@@ -42,19 +42,19 @@ const createRequest = (options = {}) => {
 fetch
 
 function createRequest(options) {
-  const { url, data, method, callback } = options;
+  const { url, data, method, callback } = options;//деструктурирую объект, для большей управляемости
 
-  const fetchOptions = {
+  const fetchOptions = {//опции для формирования запроса
     method,
     headers: {
       'Content-Type': 'application/json',
     },
   };
 
-  let requestUrl = url;
+  let requestUrl = url;//дубликат ссылки, безопасность кода
   if (method === 'GET') {
     const urlGet = new URL(url);
-    urlGet.search = new URLSearchParams(data).toString();
+    urlGet.search = new URLSearchParams(data).toString();//в search добавляю данные из data(пароль, емаил) и перевожу в строку
     requestUrl = urlGet;
   } else if (method === 'POST') {
     fetchOptions.body = JSON.stringify(data);
@@ -76,7 +76,7 @@ function createRequest(options) {
     .catch((error) => {
       callback(error);
     });
-    
+
 }
 
 */
