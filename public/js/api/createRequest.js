@@ -8,14 +8,14 @@ const createRequest = (options = {}) => {
 
   xhr.onload = function() {
     if (xhr.status != 200) {
-      callback(new Error(`Ошибка ${xhr.status}: ${xhr.statusText}`));
+      options.callback(new Error(`Ошибка ${xhr.status}: ${xhr.statusText}`));
     } else {
-      callback(null, xhr.response);
+      options.callback(null, xhr.response);
     }
   }
 
   xhr.onerror = function() {
-    callback(new Error(`Request failed!`));
+    options.callback(new Error(`Request failed!`));
   }
 
   if (options.method === 'GET') {
