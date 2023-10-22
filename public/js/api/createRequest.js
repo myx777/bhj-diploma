@@ -41,9 +41,7 @@ const createRequest = (options = {}) => {
  
 fetch
 
-function createRequest(options) {
-  const { url, data, method, callback } = options;//деструктурирую объект, для большей управляемости
-
+const createRequest = (options = {}) => {
   const fetchOptions = {//опции для формирования запроса
     method,
     headers: {
