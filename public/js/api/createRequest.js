@@ -17,24 +17,23 @@ const createRequest = (options = {}) => {
   xhr.onerror = function() {
     options.callback(new Error(`Request failed!`));
   }
+  
+  const urlGet = options.url;
+  let formData = null;
 
   if (options.method === 'GET') {
-    const urlGet = new URL(options.url);
     urlGet.search = new URLSearchParams(options.data).toString();
+  } 
 
-    xhr.open('GET', urlGet, true);
-    xhr.responseType = 'json';
-    xhr.send();
-  } else {
-    const formData = new FormData;
-
-    formData.append('mail', options.data.mail);
-    formData.append('password', options.data.password);
-
-    xhr.open('POST', options.url, true);
-    xhr.responseType = 'json';
-    xhr.send(formData);
+  if(options.method != 'GET'){
+    formData = new FormData();
+    for(const key in options.data){// для универсальности≤ чтобы не было привязки в data: {email: "email@.ru"}
+      formData.append(key, options.data[key]);
+    }
   }
+  xhr.open(options.method, urlGet, true);
+  xhr.responseType = 'json';
+  xhr.send(formData);
 };
 
 /** 
