@@ -25,7 +25,7 @@
 //     urlGet.search = new URLSearchParams(options.data).toString();
 //   } 
 
-//   if(options.method !== 'GET'){
+//   if(options.method !== 'GET') {
 //     formData = new FormData();
 //     for(const key in options.data){// для универсальности≤ чтобы не было привязки в data: {email: "email@.ru"}
 //       formData.append(key, options.data[key]);
