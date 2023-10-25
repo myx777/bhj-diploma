@@ -36,34 +36,61 @@ class Sidebar {
    * выходу устанавливает App.setState( 'init' )
    * */
   static initAuthLinks() {
-    //!слишком много повторяющегося кода, оптимизируй, когда ui заработает!, вспомни цикл и event.target
-    
-    const buttonMenuItemLogin = document.querySelector('.menu-item_login');//кнопка входа
-    buttonMenuItemLogin.addEventListener('click', (event) => {
-      event.preventDefault();
-      const modalLogin = App.getModal('login');
-      if(modalLogin) {
-        modalLogin.open();
-      }
+    const buttonsMenuItems = document.querySelectorAll('.menu-item');
+
+    buttonsMenuItems.forEach((button) => {
+      button.addEventListener('click', (event) => {
+        event.preventDefault();
+  
+        if (button.classList.contains('menu-item_login')) {
+          const modalLogin = App.getModal('login');
+          if (modalLogin) {
+            modalLogin.open();
+          }
+        } else if (button.classList.contains('menu-item_register')) {
+          const modalRegister = App.getModal('register');
+          if (modalRegister) {
+            modalRegister.open();
+          }
+        } else if (button.classList.contains('menu-item_logout')) {
+          User.logout((err, response) => {
+            if (response.success) {
+              App.setState('init');
+            }
+          });
+
+        }
+      });
+
     });
 
-    const buttonMenuItemRegister = document.querySelector('.menu-item_register');
-    buttonMenuItemRegister.addEventListener('click', (event) => {
-      event.preventDefault();
-      const modalRegister = App.getModal('register');
-      if(modalRegister) {
-        modalRegister.open();
-      }
-    });
-
-    const buttonMenuItemLogout = document.querySelector('.menu-item_logout');
-    buttonMenuItemLogout.addEventListener('click', (event) => {
-      event.preventDefault();
-      const modalLogout = App.getModal('logout');
-      if(modalLogout) {
-        modalLogout.open();
-      }
-    });
-    
   }
+    //!слишком много повторяющегося кода, оптимизируй, когда ui заработает!, вспомни цикл и event.target
+
+    // const buttonMenuItemLogin = document.querySelector('.menu-item_login');//кнопка входа
+    // buttonMenuItemLogin.addEventListener('click', (event) => {
+    //   event.preventDefault();
+    //   const modalLogin = App.getModal('login');
+    //   if(modalLogin) {
+    //     modalLogin.open();
+    //   }
+    // });
+
+    // const buttonMenuItemRegister = document.querySelector('.menu-item_register');
+    // buttonMenuItemRegister.addEventListener('click', (event) => {
+    //   event.preventDefault();
+    //   const modalRegister = App.getModal('register');
+    //   if(modalRegister) {
+    //     modalRegister.open();
+    //   }
+    // });
+
+    // const buttonMenuItemLogout = document.querySelector('.menu-item_logout');
+    // buttonMenuItemLogout.addEventListener('click', (event) => {
+    //   event.preventDefault();
+    //   User.logout((err, response) => {
+    //     if(response) {
+    //       App.setState('init');
+    //     }
+    //   });
 }
