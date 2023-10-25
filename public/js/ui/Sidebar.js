@@ -36,6 +36,34 @@ class Sidebar {
    * выходу устанавливает App.setState( 'init' )
    * */
   static initAuthLinks() {
+    //!слишком много повторяющегося кода, оптимизируй, когда ui заработает!, вспомни цикл и event.target
+    
+    const buttonMenuItemLogin = document.querySelector('.menu-item_login');//кнопка входа
+    buttonMenuItemLogin.addEventListener('click', (event) => {
+      event.preventDefault();
+      const modalLogin = App.getModal('login');
+      if(modalLogin) {
+        modalLogin.open();
+      }
+    });
 
+    const buttonMenuItemRegister = document.querySelector('.menu-item_register');
+    buttonMenuItemRegister.addEventListener('click', (event) => {
+      event.preventDefault();
+      const modalRegister = App.getModal('register');
+      if(modalRegister) {
+        modalRegister.open();
+      }
+    });
+
+    const buttonMenuItemLogout = document.querySelector('.menu-item_logout');
+    buttonMenuItemLogout.addEventListener('click', (event) => {
+      event.preventDefault();
+      const modalLogout = App.getModal('logout');
+      if(modalLogout) {
+        modalLogout.open();
+      }
+    });
+    
   }
 }
