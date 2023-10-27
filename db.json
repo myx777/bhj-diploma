@@ -50,6 +50,30 @@
       "email": "test@test.ru",
       "password": "abracadabra",
       "id": "5bkmt1hbilo326k4n"
+    },
+    {
+      "name": "qwerty",
+      "email": "qwerty@qwerty.com",
+      "password": "qwerty@qwerty.com",
+      "id": "5bkmtfhtlo8j4ikg"
+    },
+    {
+      "name": "close",
+      "email": "close@close.ru",
+      "password": "close",
+      "id": "5bkmtfl2lo8j8gid"
+    },
+    {
+      "name": "close",
+      "email": "close@c.ru",
+      "password": "close@close.ru",
+      "id": "5bkmtfohlo8jc9r1"
+    },
+    {
+      "name": " close",
+      "email": "close@w.tu",
+      "password": " close",
+      "id": "5bkmtfs1lo8jepwz"
     }
   ],
   "accounts": [

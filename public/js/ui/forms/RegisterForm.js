@@ -13,7 +13,7 @@ class RegisterForm extends AsyncForm {
     User.register(data, (err, response) => {
       if (response.success) {
         App.setState('user-logged');
-        const modal = document.getElementById('modal-register');
+        const modal = App.getModal('register');
         modal.close();
       }
     });

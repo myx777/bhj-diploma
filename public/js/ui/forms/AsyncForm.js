@@ -25,11 +25,10 @@ class AsyncForm {
    * вызывает метод submit()
    * */
   registerEvents() {
-    const form = document.getElementById('new-account-form');
-    form.onsubmit = (event) => {
+    this.element.addEventListener('submit', (event) => {
       event.preventDefault();
       this.submit();
-    }
+    });
   }
 
   /**
