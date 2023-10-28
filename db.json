@@ -80,6 +80,12 @@
       "email": "cejcha@ru.ru",
       "password": "cejcha",
       "id": "5bkmtg7mlo8jov55"
+    },
+    {
+      "name": "as",
+      "email": "as@as.as",
+      "password": "as",
+      "id": "5bkmthfllo8l0sge"
     }
   ],
   "accounts": [
@@ -97,6 +103,26 @@
       "name": "Бизнес",
       "user_id": "1",
       "id": "3"
+    },
+    {
+      "name": "2323",
+      "user_id": "5bkmthfllo8l0sge",
+      "id": "5bkmtntslo8oafu7"
+    },
+    {
+      "name": "12",
+      "user_id": "5bkmthfllo8l0sge",
+      "id": "5bkmtnuxlo8oaoax"
+    },
+    {
+      "name": "qw",
+      "user_id": "5bkmthfllo8l0sge",
+      "id": "5bkmtulzlo9qo0ki"
+    },
+    {
+      "name": "34343434343",
+      "user_id": "5bkmthfllo8l0sge",
+      "id": "5bkmtvxtlo9rhv40"
     }
   ],
   "transactions": [
