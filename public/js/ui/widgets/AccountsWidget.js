@@ -17,12 +17,14 @@ class AccountsWidget {
     if(!element) {
       throw new Error('Empty element!');
     }
+
     this.element = element;
-    this.registerEvents();
+    
     this.update();
+    this.registerEvents();
   }
 
-  /**
+  /*
    * При нажатии на .create-account открывает окно
    * #modal-new-account для создания нового счёта
    * При нажатии на один из существующих счетов
@@ -30,20 +32,21 @@ class AccountsWidget {
    * вызывает AccountsWidget.onSelectAccount()
    * */
   registerEvents() {
-    const keep = document.querySelector(' .create-account');
+    const keep = this.element.querySelector('.create-account');
+
     keep.addEventListener('click', (event) => {
       event.preventDefault();
       App.getModal('createAccount').open();
-
-    });
-    const accounts = document.querySelectorAll('.account');
-    accounts.forEach((element) => {
-      element.addEventListener('click', (event) => {
-        event.preventDefault();
-        this.onSelectAccount(element);
-      });
     });
 
+    this.element.addEventListener('click', (event) => {
+      event.preventDefault();
+      const target = event.target;
+      const closestAccount = target.closest('li.account');//иначе он считывает элемент, по которому нажали, а не всю кнопку
+      if (closestAccount.classList.contains('account')) {
+        this.onSelectAccount(closestAccount);
+      }
+    });
   }
 
   /**
@@ -58,23 +61,33 @@ class AccountsWidget {
    * */
   update() {
     const user = User.current();
-    if(user) {
-      Account.list({}, (err, response) => {//так data не передаем в методе, а в функции она исп, использ деструктуризацию
-        if(response.success) {
-          this.clear();
-          this.renderItem(response.data);
-        }
-      });
+  
+    if (!user) {
+      console.log("User is not logged in. Exiting update.");
+      return;
     }
-  }
+  
+    Account.list({}, (err, response) => {
+      if (err) {
+        console.error("Error fetching accounts:", err);
+        return;
+      }
 
+      const accounts = response.data;
+  
+      this.clear();
+      this.renderItem(accounts);
+    });
+  }
+ 
   /**
    * Очищает список ранее отображённых счетов.
    * Для этого необходимо удалять все элементы .account
    * в боковой колонке
    * */
   clear() {
-    const accounts = document.querySelectorAll('.account');
+    const accounts = this.element.querySelectorAll('.account');
+
     accounts.forEach(account => {
       account.remove();
     });
@@ -88,10 +101,12 @@ class AccountsWidget {
    * Вызывает App.showPage( 'transactions', { account_id: id_счёта });
    * */
   onSelectAccount( element ) {
-    const accounts = document.querySelectorAll('.account');
+    const accounts = this.element.querySelectorAll('.account');
+
     accounts.forEach(account => {
       account.classList.remove('active');
     });
+
     element.classList.add('active');
     App.showPage( 'transactions', { account_id: element.dataset.id });
   }
@@ -119,9 +134,14 @@ class AccountsWidget {
    * и добавляет его внутрь элемента виджета
    * */
   renderItem(data){
+    console.log(data);
+    this.clear(); // Очищаем счета перед добавлением новых
     data.forEach((item) => {
       const accountHTML = this.getAccountHTML(item);
       this.element.insertAdjacentHTML('beforeend', accountHTML);
     });
+    // const accountHTML = this.getAccountHTML(data);
+    // console.log(accountHTML)
+    // this.element.insertAdjacentHTML('beforeend', accountHTML);
   }
 }

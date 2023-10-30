@@ -40,36 +40,29 @@ class Sidebar {
     const registerButton = document.querySelector('.menu-item_register');
     const logoutButton = document.querySelector('.menu-item_logout');
   
-    if (loginButton) {
-      loginButton.addEventListener('click', (event) => {
-        event.preventDefault();
-        const modalLogin = App.getModal('login');
-        if (modalLogin) {
-          modalLogin.open();
+    loginButton.addEventListener('click', (event) => {
+      event.preventDefault();
+      const modalLogin = App.getModal('login');
+      if (modalLogin) {
+        modalLogin.open();
+      }
+    });
+  
+    registerButton.addEventListener('click', (event) => {
+      event.preventDefault();
+      const modalRegister = App.getModal('register');
+      if (modalRegister) {
+        modalRegister.open();
+      }
+    });
+  
+    logoutButton.addEventListener('click', (event) => {
+      event.preventDefault();
+      User.logout((err, response) => {
+        if (response.success) {
+          App.setState('init');
         }
       });
-    }
-  
-    if (registerButton) {
-      registerButton.addEventListener('click', (event) => {
-        event.preventDefault();
-        const modalRegister = App.getModal('register');
-        if (modalRegister) {
-          modalRegister.open();
-        }
-      });
-    }
-  
-    if (logoutButton) {
-      logoutButton.addEventListener('click', (event) => {
-        event.preventDefault();
-        User.logout((err, response) => {
-          if (response.success) {
-            App.setState('init');
-          }
-        });
-      });
-    }
+    });
   }
-  
 }
