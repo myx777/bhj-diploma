@@ -67,7 +67,7 @@ class AccountsWidget {
       return;
     }
   
-    Account.list({}, (err, response) => {
+    Account.list({}, (err, response) => {//передаю пустой объект
       if (err) {
         console.error("Error fetching accounts:", err);
         return;
@@ -134,7 +134,6 @@ class AccountsWidget {
    * и добавляет его внутрь элемента виджета
    * */
   renderItem(data){
-    console.log(data);
     this.clear(); // Очищаем счета перед добавлением новых
     data.forEach((item) => {
       const accountHTML = this.getAccountHTML(item);

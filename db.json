@@ -285,6 +285,51 @@
       "sum": 300000,
       "type": "expense",
       "user_id": "1"
+    },
+    {
+      "id": "5bkmt1ustloea5l1q",
+      "type": "income",
+      "name": "as",
+      "sum": 12,
+      "account_id": "5bkmtulzlo9qo0ki",
+      "user_id": "5bkmthfllo8l0sge",
+      "created_at": "2023-10-31T12:03:25.261Z"
+    },
+    {
+      "id": "5bkmt1uxgloeaa3jm",
+      "type": "expense",
+      "name": "12",
+      "sum": 2,
+      "account_id": "5bkmtntslo8oafu7",
+      "user_id": "5bkmthfllo8l0sge",
+      "created_at": "2023-10-31T12:06:55.857Z"
+    },
+    {
+      "id": "5bkmt1uzjloeaaovi",
+      "type": "expense",
+      "name": "qw",
+      "sum": 23,
+      "account_id": "5bkmtntslo8oafu7",
+      "user_id": "5bkmthfllo8l0sge",
+      "created_at": "2023-10-31T12:07:23.501Z"
+    },
+    {
+      "id": "5bkmt1v0jloeaavx1",
+      "type": "income",
+      "name": "qweqw",
+      "sum": 324234,
+      "account_id": "5bkmtntslo8oafu7",
+      "user_id": "5bkmthfllo8l0sge",
+      "created_at": "2023-10-31T12:07:32.628Z"
+    },
+    {
+      "id": "5bkmt1v1hloeabbru",
+      "type": "expense",
+      "name": "qw",
+      "sum": 23425235,
+      "account_id": "5bkmtntslo8oafu7",
+      "user_id": "5bkmthfllo8l0sge",
+      "created_at": "2023-10-31T12:07:53.177Z"
     }
   ]
 }
