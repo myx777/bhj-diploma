@@ -17,6 +17,8 @@ class CreateTransactionForm extends AsyncForm {
    * Обновляет в форме всплывающего окна выпадающий список
    * */
   renderAccountsList() {
+    const accountsSelect = this.element.querySelector('.accounts-select');
+    
     Account.list({}, (err, response) => { //пустой объект
       if (err) {
         console.error("Error fetching accounts:", err);
@@ -24,7 +26,7 @@ class CreateTransactionForm extends AsyncForm {
       }
 
       const accounts = response.data;
-      const accountsSelect = this.element.querySelector('.accounts-select');
+      // console.log(accounts)
 
       accounts.forEach((account) => {
         const option = document.createElement('option');

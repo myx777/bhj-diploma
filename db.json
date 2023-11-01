@@ -148,6 +148,11 @@
       "name": "jdskjbsdk",
       "user_id": "5bkmthfllo8l0sge",
       "id": "5bkmt18lllod7reri"
+    },
+    {
+      "name": "имя счета",
+      "user_id": "5bkmthfllo8l0sge",
+      "id": "5bkmt15nloelan9a"
     }
   ],
   "transactions": [
@@ -330,6 +335,177 @@
       "account_id": "5bkmtntslo8oafu7",
       "user_id": "5bkmthfllo8l0sge",
       "created_at": "2023-10-31T12:07:53.177Z"
+    },
+    {
+      "id": "5bkmt236bloeenz2b",
+      "type": "income",
+      "name": "weewe",
+      "sum": 2222,
+      "account_id": "5bkmtntslo8oafu7",
+      "user_id": "5bkmthfllo8l0sge",
+      "created_at": "2023-10-31T14:09:41.698Z"
+    },
+    {
+      "id": "5bkmt23raloekpau1",
+      "type": "income",
+      "name": "1",
+      "sum": 12,
+      "account_id": "5bkmtntslo8oafu7",
+      "user_id": "5bkmthfllo8l0sge",
+      "created_at": "2023-10-31T16:58:41.304Z"
+    },
+    {
+      "id": "5bkmtl6loel0s4k",
+      "type": "income",
+      "name": "q",
+      "sum": 1,
+      "account_id": "5bkmtntslo8oafu7",
+      "user_id": "5bkmthfllo8l0sge",
+      "created_at": "2023-10-31T17:07:36.931Z"
+    },
+    {
+      "id": "5bkmt27uloeltz0p",
+      "type": "income",
+      "name": "cat",
+      "sum": 111111111,
+      "account_id": "5bkmtntslo8oafu7",
+      "user_id": "5bkmthfllo8l0sge",
+      "created_at": "2023-10-31T17:30:18.888Z"
+    },
+    {
+      "id": "5bkmt2a3loelv16k",
+      "type": "income",
+      "name": "sa",
+      "sum": 222222,
+      "account_id": "5bkmtntslo8oafu7",
+      "user_id": "5bkmthfllo8l0sge",
+      "created_at": "2023-10-31T17:31:08.347Z"
+    },
+    {
+      "id": "5bkmt2k7loem1diz",
+      "type": "income",
+      "name": "zxz",
+      "sum": 444,
+      "account_id": "5bkmtntslo8oafu7",
+      "user_id": "5bkmthfllo8l0sge",
+      "created_at": "2023-10-31T17:36:04.282Z"
+    },
+    {
+      "id": "5bkmt36floemivmb",
+      "type": "income",
+      "name": "q",
+      "sum": 3,
+      "account_id": "5bkmtntslo8oafu7",
+      "user_id": "5bkmthfllo8l0sge",
+      "created_at": "2023-10-31T17:49:40.882Z"
+    },
+    {
+      "id": "5bkmt3m6loemqoa5",
+      "type": "income",
+      "name": "re",
+      "sum": 2,
+      "account_id": "5bkmtntslo8oafu7",
+      "user_id": "5bkmthfllo8l0sge",
+      "created_at": "2023-10-31T17:55:44.620Z"
+    },
+    {
+      "id": "5bkmt3qhloemsbx1",
+      "type": "income",
+      "name": "z",
+      "sum": 2,
+      "account_id": "5bkmtntslo8oafu7",
+      "user_id": "5bkmthfllo8l0sge",
+      "created_at": "2023-10-31T17:57:01.908Z"
+    },
+    {
+      "id": "5bkmt4r1loenorc1",
+      "type": "income",
+      "name": "w",
+      "sum": 12,
+      "account_id": "5bkmtntslo8oafu7",
+      "user_id": "5bkmthfllo8l0sge",
+      "created_at": "2023-10-31T18:22:14.880Z"
+    },
+    {
+      "id": "5bkmt4u4loenq0tm",
+      "type": "income",
+      "name": "we",
+      "sum": 21,
+      "account_id": "5bkmtntslo8oafu7",
+      "user_id": "5bkmthfllo8l0sge",
+      "created_at": "2023-10-31T18:23:13.833Z"
+    },
+    {
+      "id": "5bkmt4wfloenrior",
+      "type": "income",
+      "name": "u",
+      "sum": 9,
+      "account_id": "5bkmtntslo8oafu7",
+      "user_id": "5bkmthfllo8l0sge",
+      "created_at": "2023-10-31T18:24:23.642Z"
+    },
+    {
+      "id": "5bkmt4z0loenujnf",
+      "type": "income",
+      "name": "у",
+      "sum": 3,
+      "account_id": "5bkmtntslo8oafu7",
+      "user_id": "5bkmthfllo8l0sge",
+      "created_at": "2023-10-31T18:26:44.858Z"
+    },
+    {
+      "id": "5bkmt54mloenynpm",
+      "type": "income",
+      "name": "w",
+      "sum": 3,
+      "account_id": "5bkmtntslo8oafu7",
+      "user_id": "5bkmthfllo8l0sge",
+      "created_at": "2023-10-31T18:29:56.745Z"
+    },
+    {
+      "id": "5bkmt5b6loeo0rag",
+      "type": "expense",
+      "name": "w",
+      "sum": 2,
+      "account_id": "5bkmtntslo8oafu7",
+      "user_id": "5bkmthfllo8l0sge",
+      "created_at": "2023-10-31T18:31:34.695Z"
+    },
+    {
+      "id": "5bkmt5dkloeo3pgl",
+      "type": "income",
+      "name": "w",
+      "sum": 4,
+      "account_id": "5bkmtntslo8oafu7",
+      "user_id": "5bkmthfllo8l0sge",
+      "created_at": "2023-10-31T18:33:52.292Z"
+    },
+    {
+      "id": "5bkmt648loeoahxc",
+      "type": "income",
+      "name": "q",
+      "sum": 2,
+      "account_id": "5bkmtntslo8oafu7",
+      "user_id": "5bkmthfllo8l0sge",
+      "created_at": "2023-10-31T18:39:09.119Z"
+    },
+    {
+      "id": "5bkmt6hyloeoig20",
+      "type": "income",
+      "name": "2",
+      "sum": 2,
+      "account_id": "5bkmtntslo8oafu7",
+      "user_id": "5bkmthfllo8l0sge",
+      "created_at": "2023-10-31T18:45:19.943Z"
+    },
+    {
+      "id": "5bkmt6nwloeoq2ux",
+      "type": "income",
+      "name": "w",
+      "sum": 2,
+      "account_id": "5bkmtntslo8oafu7",
+      "user_id": "5bkmthfllo8l0sge",
+      "created_at": "2023-10-31T18:51:16.088Z"
     }
   ]
 }

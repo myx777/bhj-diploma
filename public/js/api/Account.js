@@ -12,7 +12,6 @@ class Account extends Entity {
   static get(id = '', callback){
     const options = {
       url: this.URL + `/${id}`,
-      data,
       method: 'GET',
       callback,
     }
