@@ -26,7 +26,6 @@ class CreateTransactionForm extends AsyncForm {
       }
 
       const accounts = response.data;
-      // console.log(accounts)
 
       accounts.forEach((account) => {
         const option = document.createElement('option');
@@ -45,17 +44,17 @@ class CreateTransactionForm extends AsyncForm {
    * в котором находится форма
    * */
   onSubmit(data) {
-    Transaction.create(data , (err, response) => {
+    Transaction.create(data, (err, response) => {
       if (err) {
         console.error("Error fetching accounts:", err);
         return;
       }
 
       if(response.success) {
+        App.update();
         App.clear();
         App.getModal('newIncome').close();
         App.getModal('newExpense').close();
-        App.update();
       }
     });
   }

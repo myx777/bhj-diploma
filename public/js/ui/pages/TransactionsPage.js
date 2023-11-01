@@ -43,7 +43,7 @@ class TransactionsPage {
 
     if (buttonDeleteTransaction) {
       buttonDeleteTransaction.addEventListener('click', () => {
-        this.removeTransaction();
+        this.removeTransaction(this.lastOptions.account_id);
       });
     }
   }
@@ -63,15 +63,16 @@ class TransactionsPage {
     };
 
     if (window.confirm('Вы действительно хотите удалить счёт?')) {
-      Account.remove({}, (err, response) => {
+      Account.remove(this.lastOptions.account_id, (err, response) => {
         if (err) {
           console.error("Error removing accounts:", err);
           return;
         }
-        // const account = response.data;
-        this.clear();
-        App.updateWidgets();
-        App.updateForms()
+        console.log(response)
+        if(response.success) {
+          App.updateWidgets();
+          App.updateForms();
+        }
       });
     }
   }
@@ -82,14 +83,16 @@ class TransactionsPage {
    * По удалению транзакции вызовите метод App.update(),
    * либо обновляйте текущую страницу (метод update) и виджет со счетами
    * */
-  removeTransaction(id) {
+  removeTransaction() {
     if (window.confirm('Вы действительно хотите удалить эту транзакцию?')) {
-      Transaction.remove(id, (err, response) => {
+      Transaction.remove(this.lastOptions.account_id, (err, response) => {
         if (err) {
           console.error('Error removing transaction:', err);
           return;
         }
-        App.update();
+        if(response.success) {
+          App.update();
+        }
       });
     }
   }
@@ -115,9 +118,7 @@ class TransactionsPage {
 
       if(response.success) {
         const account = response.data;
-        // console.log(account)
-        this.renderTitle(account.name);
-        
+        this.renderTitle(account.name); 
       }
 
       Transaction.list(options.account_id, (err, response) => {
@@ -125,12 +126,12 @@ class TransactionsPage {
           console.error("Error fetching transactions:", err);
           return;
         }
-        console.log(response)
-        this.renderTransactions(response.data);
+        if(response.success) {
+          // console.log(response);
+          this.renderTransactions(response.data);
+        }
       });
     });
-    // console.log(this.element)
-
   }
 
   /**
@@ -141,6 +142,7 @@ class TransactionsPage {
   clear() {
     const content = this.element.querySelector('.content');
     content.innerHTML = ''; // Очищаем содержимое контейнера
+    this.renderTransactions();
     this.renderTitle('Название счёта');
     this.lastOptions = null;
   }
