@@ -98,6 +98,12 @@
       "email": "1@1.ru",
       "password": "1",
       "id": "5bkmt1f8nlon8rdkw"
+    },
+    {
+      "name": "demo",
+      "email": "demo@demo.ru",
+      "password": "demo",
+      "id": "5bkmt1ph4lonespa4"
     }
   ],
   "accounts": [
@@ -290,6 +296,11 @@
       "name": "1 account",
       "user_id": "5bkmt1f8nlon8rdkw",
       "id": "5bkmt1f9klon8sect"
+    },
+    {
+      "name": "2",
+      "user_id": "5bkmt1f8nlon8rdkw",
+      "id": "5bkmt1pf7loneq6u4"
     }
   ],
   "transactions": [
@@ -1462,6 +1473,51 @@
       "account_id": "5bkmt1f9klon8sect",
       "user_id": "5bkmt1f8nlon8rdkw",
       "created_at": "2023-11-06T21:03:21.018Z"
+    },
+    {
+      "id": "5bkmt1p8dloneleh1",
+      "type": "income",
+      "name": "32",
+      "sum": 23,
+      "account_id": "5bkmt1f9klon8sect",
+      "user_id": "5bkmt1f8nlon8rdkw",
+      "created_at": "2023-11-06T21:17:37.284Z"
+    },
+    {
+      "id": "5bkmt1p9clonennah",
+      "type": "income",
+      "name": "45",
+      "sum": 4,
+      "account_id": "5bkmt1f9klon8sect",
+      "user_id": "5bkmt1f8nlon8rdkw",
+      "created_at": "2023-11-06T21:19:22.024Z"
+    },
+    {
+      "id": "5bkmt1pcylonep0xg",
+      "type": "income",
+      "name": "6",
+      "sum": 8,
+      "account_id": "5bkmt1f9klon8sect",
+      "user_id": "5bkmt1f8nlon8rdkw",
+      "created_at": "2023-11-06T21:20:26.355Z"
+    },
+    {
+      "id": "5bkmt1peclonepcer",
+      "type": "income",
+      "name": "6",
+      "sum": 87,
+      "account_id": "5bkmt1f9klon8sect",
+      "user_id": "5bkmt1f8nlon8rdkw",
+      "created_at": "2023-11-06T21:20:41.234Z"
+    },
+    {
+      "id": "5bkmt1pg5loneql29",
+      "type": "income",
+      "name": "45",
+      "sum": 456,
+      "account_id": "5bkmt1f9klon8sect",
+      "user_id": "5bkmt1f8nlon8rdkw",
+      "created_at": "2023-11-06T21:21:39.104Z"
     }
   ]
 }
