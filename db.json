@@ -86,6 +86,18 @@
       "email": "as@as.as",
       "password": "as",
       "id": "5bkmthfllo8l0sge"
+    },
+    {
+      "name": "1",
+      "email": "1@q.ru",
+      "password": "1",
+      "id": "5bkmtuyelommgk8c"
+    },
+    {
+      "name": "1",
+      "email": "1@1.ru",
+      "password": "1",
+      "id": "5bkmt1f8nlon8rdkw"
     }
   ],
   "accounts": [
@@ -221,6 +233,63 @@
     {
       "user_id": "5bkmthfllo8l0sge",
       "id": "5bkmtkiqlog38oxh"
+    },
+    {
+      "name": "1",
+      "user_id": "5bkmtuyelommgk8c",
+      "id": "5bkmtximlompoip5"
+    },
+    {
+      "user_id": "5bkmtuyelommgk8c",
+      "id": "5bkmt14tylon0vpxn"
+    },
+    {
+      "user_id": "5bkmtuyelommgk8c",
+      "id": "5bkmt14vflon0vxm4"
+    },
+    {
+      "user_id": "5bkmtuyelommgk8c",
+      "id": "5bkmt14yilon0zr41"
+    },
+    {
+      "user_id": "5bkmtuyelommgk8c",
+      "id": "5bkmt15cclon1bblq"
+    },
+    {
+      "user_id": "5bkmtuyelommgk8c",
+      "id": "5bkmt15uzlon1gnno"
+    },
+    {
+      "user_id": "5bkmtuyelommgk8c",
+      "id": "5bkmt15y1lon1hu7y"
+    },
+    {
+      "name": "2",
+      "user_id": "5bkmtuyelommgk8c",
+      "id": "5bkmt160ulon1ketd"
+    },
+    {
+      "user_id": "5bkmtuyelommgk8c",
+      "id": "5bkmt1625lon1khyj"
+    },
+    {
+      "user_id": "5bkmtuyelommgk8c",
+      "id": "5bkmt164zlon1lxd9"
+    },
+    {
+      "name": "4",
+      "user_id": "5bkmtuyelommgk8c",
+      "id": "5bkmt16pflon22t6h"
+    },
+    {
+      "name": "6",
+      "user_id": "5bkmtuyelommgk8c",
+      "id": "5bkmt16z8lon2hyhy"
+    },
+    {
+      "name": "1 account",
+      "user_id": "5bkmt1f8nlon8rdkw",
+      "id": "5bkmt1f9klon8sect"
     }
   ],
   "transactions": [
@@ -889,6 +958,267 @@
       "account_id": "5bkmtnuxlo8oaoax",
       "user_id": "5bkmthfllo8l0sge",
       "created_at": "2023-11-01T17:18:00.753Z"
+    },
+    {
+      "id": "5bkmtxztlompwgtq",
+      "type": "income",
+      "name": "2",
+      "sum": 32,
+      "account_id": "undefined",
+      "user_id": "5bkmtuyelommgk8c",
+      "created_at": "2023-11-06T09:46:23.149Z"
+    },
+    {
+      "id": "5bkmtyi0lomq3aau",
+      "type": "income",
+      "name": "we",
+      "sum": 56,
+      "account_id": "5bkmtximlompoip5",
+      "user_id": "5bkmtuyelommgk8c",
+      "created_at": "2023-11-06T09:51:41.285Z"
+    },
+    {
+      "id": "5bkmtyvzlomqa31i",
+      "type": "income",
+      "name": "67",
+      "sum": 67,
+      "account_id": "5bkmtximlompoip5",
+      "user_id": "5bkmtuyelommgk8c",
+      "created_at": "2023-11-06T09:56:58.469Z"
+    },
+    {
+      "id": "5bkmt10v0lomrlgax",
+      "type": "income",
+      "name": "4",
+      "sum": 34,
+      "account_id": "5bkmtximlompoip5",
+      "user_id": "5bkmtuyelommgk8c",
+      "created_at": "2023-11-06T10:33:48.488Z"
+    },
+    {
+      "id": "5bkmt142clon0hc62",
+      "type": "income",
+      "name": "rt",
+      "sum": 5,
+      "account_id": "5bkmtximlompoip5",
+      "user_id": "5bkmtuyelommgk8c",
+      "created_at": "2023-11-06T14:42:33.049Z"
+    },
+    {
+      "id": "5bkmt143elon0hjbt",
+      "type": "expense",
+      "name": "v",
+      "sum": 162,
+      "account_id": "5bkmtximlompoip5",
+      "user_id": "5bkmtuyelommgk8c",
+      "created_at": "2023-11-06T14:42:42.328Z"
+    },
+    {
+      "id": "5bkmt14sqlon0ulck",
+      "type": "income",
+      "name": "f",
+      "sum": 6,
+      "account_id": "5bkmtximlompoip5",
+      "user_id": "5bkmtuyelommgk8c",
+      "created_at": "2023-11-06T14:52:51.475Z"
+    },
+    {
+      "id": "5bkmt1530lon13bjm",
+      "type": "income",
+      "name": "2",
+      "sum": 2,
+      "account_id": "5bkmtximlompoip5",
+      "user_id": "5bkmtuyelommgk8c",
+      "created_at": "2023-11-06T14:59:38.673Z"
+    },
+    {
+      "id": "5bkmt15w2lon1guy7",
+      "type": "income",
+      "name": "32",
+      "sum": 32,
+      "account_id": "5bkmtximlompoip5",
+      "user_id": "5bkmtuyelommgk8c",
+      "created_at": "2023-11-06T15:10:10.350Z"
+    },
+    {
+      "id": "5bkmt15z3lon1hxsa",
+      "type": "income",
+      "name": "1",
+      "sum": 1,
+      "account_id": "5bkmtximlompoip5",
+      "user_id": "5bkmtuyelommgk8c",
+      "created_at": "2023-11-06T15:11:00.681Z"
+    },
+    {
+      "id": "5bkmt15zzlon1i581",
+      "type": "expense",
+      "name": "1",
+      "sum": 1,
+      "account_id": "5bkmtximlompoip5",
+      "user_id": "5bkmtuyelommgk8c",
+      "created_at": "2023-11-06T15:11:10.320Z"
+    },
+    {
+      "id": "5bkmt1630lon1llo0",
+      "type": "expense",
+      "name": "e",
+      "sum": 454,
+      "account_id": "5bkmtximlompoip5",
+      "user_id": "5bkmtuyelommgk8c",
+      "created_at": "2023-11-06T15:13:51.599Z"
+    },
+    {
+      "id": "5bkmt1642lon1lsyi",
+      "type": "expense",
+      "name": "e",
+      "sum": 454,
+      "account_id": "5bkmt14tylon0vpxn",
+      "user_id": "5bkmtuyelommgk8c",
+      "created_at": "2023-11-06T15:14:01.049Z"
+    },
+    {
+      "id": "5bkmt16m0lon20z3o",
+      "type": "income",
+      "name": "ц",
+      "sum": 21,
+      "account_id": "5bkmtximlompoip5",
+      "user_id": "5bkmtuyelommgk8c",
+      "created_at": "2023-11-06T15:25:48.851Z"
+    },
+    {
+      "id": "5bkmt16w7lon249h8",
+      "type": "income",
+      "name": "3",
+      "sum": 3,
+      "account_id": "5bkmtximlompoip5",
+      "user_id": "5bkmtuyelommgk8c",
+      "created_at": "2023-11-06T15:28:22.267Z"
+    },
+    {
+      "id": "5bkmt170hlon2i5x1",
+      "type": "income",
+      "name": "1",
+      "sum": 1,
+      "account_id": "5bkmtximlompoip5",
+      "user_id": "5bkmtuyelommgk8c",
+      "created_at": "2023-11-06T15:39:10.836Z"
+    },
+    {
+      "id": "5bkmt176ylon2jrbt",
+      "type": "income",
+      "name": "7",
+      "sum": 8,
+      "account_id": "5bkmtximlompoip5",
+      "user_id": "5bkmtuyelommgk8c",
+      "created_at": "2023-11-06T15:40:25.240Z"
+    },
+    {
+      "id": "5bkmt17pllon2rbx7",
+      "type": "income",
+      "name": "54",
+      "sum": 45,
+      "account_id": "5bkmtximlompoip5",
+      "user_id": "5bkmtuyelommgk8c",
+      "created_at": "2023-11-06T15:46:18.522Z"
+    },
+    {
+      "id": "5bkmt17s0lon2s5s6",
+      "type": "income",
+      "name": "3",
+      "sum": 3,
+      "account_id": "5bkmtximlompoip5",
+      "user_id": "5bkmtuyelommgk8c",
+      "created_at": "2023-11-06T15:46:57.221Z"
+    },
+    {
+      "id": "5bkmt18i0lon37wtp",
+      "type": "income",
+      "name": "ew",
+      "sum": 2,
+      "account_id": "5bkmtximlompoip5",
+      "user_id": "5bkmtuyelommgk8c",
+      "created_at": "2023-11-06T15:59:12.108Z"
+    },
+    {
+      "id": "5bkmt18j3lon39vij",
+      "type": "income",
+      "name": "zx",
+      "sum": 1,
+      "account_id": "5bkmtximlompoip5",
+      "user_id": "5bkmtuyelommgk8c",
+      "created_at": "2023-11-06T16:00:43.722Z"
+    },
+    {
+      "id": "5bkmt18t7lon3qvop",
+      "type": "income",
+      "name": "23",
+      "sum": 23,
+      "account_id": "5bkmtximlompoip5",
+      "user_id": "5bkmtuyelommgk8c",
+      "created_at": "2023-11-06T16:13:57.096Z"
+    },
+    {
+      "id": "5bkmt1912lon3slhn",
+      "type": "income",
+      "name": "sa",
+      "sum": 12,
+      "account_id": "5bkmtximlompoip5",
+      "user_id": "5bkmtuyelommgk8c",
+      "created_at": "2023-11-06T16:15:17.194Z"
+    },
+    {
+      "id": "5bkmt195glon3u7aa",
+      "type": "income",
+      "name": "s",
+      "sum": 2,
+      "account_id": "5bkmtximlompoip5",
+      "user_id": "5bkmtuyelommgk8c",
+      "created_at": "2023-11-06T16:16:32.097Z"
+    },
+    {
+      "id": "5bkmt19b8lon3w6m0",
+      "type": "income",
+      "name": "w",
+      "sum": 2,
+      "account_id": "5bkmtximlompoip5",
+      "user_id": "5bkmtuyelommgk8c",
+      "created_at": "2023-11-06T16:18:04.535Z"
+    },
+    {
+      "id": "5bkmt19sdlon4l3bx",
+      "type": "income",
+      "name": "zx",
+      "sum": 3,
+      "account_id": "5bkmtximlompoip5",
+      "user_id": "5bkmtuyelommgk8c",
+      "created_at": "2023-11-06T16:37:26.684Z"
+    },
+    {
+      "id": "5bkmt1adplon4uzt7",
+      "type": "income",
+      "name": "2",
+      "sum": 2,
+      "account_id": "5bkmtximlompoip5",
+      "user_id": "5bkmtuyelommgk8c",
+      "created_at": "2023-11-06T16:45:08.682Z"
+    },
+    {
+      "id": "5bkmt1faolon8t2na",
+      "type": "income",
+      "name": "q",
+      "sum": 1,
+      "account_id": "5bkmt1f9klon8sect",
+      "user_id": "5bkmt1f8nlon8rdkw",
+      "created_at": "2023-11-06T18:35:37.509Z"
+    },
+    {
+      "id": "5bkmt1fbtlon8wqh0",
+      "type": "expense",
+      "name": "1",
+      "sum": 1,
+      "account_id": "5bkmt1f9klon8sect",
+      "user_id": "5bkmt1f8nlon8rdkw",
+      "created_at": "2023-11-06T18:38:28.355Z"
     }
   ]
 }

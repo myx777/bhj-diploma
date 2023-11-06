@@ -39,15 +39,19 @@ class User {
       method: 'GET',
       responseType: 'json',
       callback: (err, response) => {
-        if (response.success) {
+        if (response && response.success) {
+          // Авторизованный пользователь
           this.setCurrent(response.user);
-        } else {
-          this.unsetCurrent(response.user);
+        } else if (response && !response.success) {
+          // Пользователь не авторизован
+          this.unsetCurrent();
         }
-        callback(err, response);       
+  
+        callback(err, response);
       }
     });
   }
+  
 
   /**
    * Производит попытку авторизации.

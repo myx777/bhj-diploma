@@ -18,22 +18,23 @@ class CreateTransactionForm extends AsyncForm {
    * */
   renderAccountsList() {
     const accountsSelect = this.element.querySelector('.accounts-select');
+    accountsSelect.innerHTML = ''; // очищаю список перед добавлением новых элементов
     
     Account.list({}, (err, response) => { //пустой объект
       if (err) {
         console.error("Error fetching accounts:", err);
         return;
       }
+      if(response.data) {
+        const accounts = response.data;
+        // Используем метод reduce для накопления строк разметки в переменной acc.
+        const optionsMarkup = accounts.reduce((acc, item) => {
+          return acc + `<option value="${item.id}">${item.name}</option>`;
+        }, '');
+        
+        accountsSelect.innerHTML = optionsMarkup;
+      }
 
-      const accounts = response.data;
-
-      accounts.forEach((account) => {
-        const option = document.createElement('option');
-        option.value = account.id;
-        option.textContent = account.name;
-        accountsSelect.appendChild(option);
-      });
-      
     });
   }
 
@@ -49,10 +50,9 @@ class CreateTransactionForm extends AsyncForm {
         console.error("Error fetching accounts:", err);
         return;
       }
-
+      console.log(response)
       if(response.success) {
         App.update();
-        App.clear();
         App.getModal('newIncome').close();
         App.getModal('newExpense').close();
       }

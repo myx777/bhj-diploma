@@ -2,6 +2,7 @@
  * Класс Entity - базовый для взаимодействия с сервером.
  * Имеет свойство URL, равно пустой строке.
  * */
+
 class Entity {
   static URL = '';
 
@@ -38,6 +39,6 @@ class Entity {
    * (в зависимости от того, что наследуется от Entity)
    * */
   static remove(data, callback ) {
-    this.request('PUT', data, callback);
+    this.request('DELETE', data, callback);
   }
 }

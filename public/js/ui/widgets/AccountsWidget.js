@@ -43,6 +43,9 @@ class AccountsWidget {
       event.preventDefault();
       const target = event.target;
       const closestAccount = target.closest('li.account');//иначе он считывает элемент, по которому нажали, а не всю кнопку
+      if(!closestAccount) {
+        return;
+      }
       if (closestAccount.classList.contains('account')) {
         this.onSelectAccount(closestAccount);
       }
@@ -76,7 +79,7 @@ class AccountsWidget {
       const accounts = response.data;
   
       this.clear();
-      this.renderItem(accounts);
+      this.renderItems(accounts);
     });
   }
  
@@ -133,14 +136,11 @@ class AccountsWidget {
    * AccountsWidget.getAccountHTML HTML-код элемента
    * и добавляет его внутрь элемента виджета
    * */
-  renderItem(data){
+  renderItems(data){
     this.clear(); // Очищаем счета перед добавлением новых
     data.forEach((item) => {
       const accountHTML = this.getAccountHTML(item);
       this.element.insertAdjacentHTML('beforeend', accountHTML);
     });
-    // const accountHTML = this.getAccountHTML(data);
-    // console.log(accountHTML)
-    // this.element.insertAdjacentHTML('beforeend', accountHTML);
   }
 }

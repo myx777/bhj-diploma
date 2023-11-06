@@ -58,6 +58,7 @@ class TransactionsPage {
    * для обновления приложения
    * */
   removeAccount() {
+    // debugger
     if(this.lastOptions === null) { 
       return;
     };
@@ -110,28 +111,47 @@ class TransactionsPage {
 
     this.lastOptions = options;
 
-    Account.get(options.account_id, (err, response) => {
-      if (err) {
-        console.error("Error fetching accounts:", err);
-        return;
-      }
-
-      if(response.success) {
-        const account = response.data;
-        this.renderTitle(account.name); 
-      }
-
-      Transaction.list(options.account_id, (err, response) => {
+    const promiseAccount = new Promise(function(resolve, reject) {
+      // функция-исполнитель (executor)
+      // "певец"
+      Account.get(options.account_id, (err, response) => {
         if (err) {
-          console.error("Error fetching transactions:", err);
+          console.error("Error fetching accounts:", err);
+          reject(err);
           return;
         }
+  
         if(response.success) {
-          // console.log(response);
-          this.renderTransactions(response.data);
+          const account = response.data;
+          resolve(account);
         }
       });
     });
+
+    const promiseTransaction = new Promise(function(resolve, reject) {
+      Transaction.list(options.account_id, (err, response) => {
+        if (err) {
+          console.error("Error fetching transactions:", err);
+          reject(err);
+          return;
+        }
+        if(response.success) {
+          const transaction = response.data;
+          resolve(transaction);
+        }
+      });
+    });
+
+    Promise.all([promiseAccount, promiseTransaction])
+    .then(([account, transactions]) => {
+      this.renderTitle(account.name);
+      this.renderTransactions(transactions);
+      console.log(transactions)
+    })
+    .catch((error) => {
+      console.error("Error in Promise.all:", error);
+    });
+
   }
 
   /**
@@ -151,7 +171,9 @@ class TransactionsPage {
    * Устанавливает заголовок в элемент .content-title
    * */
   renderTitle(name){
-    // console.log(name)
+    if(!name) {
+      return;
+    }
     const contentTitle = this.element.querySelector('.content-title');
     contentTitle.textContent = name;
   }
@@ -178,7 +200,6 @@ class TransactionsPage {
    * item - объект с информацией о транзакции
    * */
   getTransactionHTML(item){
-    // console.log(item)
     return `
       <div class="transaction transaction_${item.type} row">
           <div class="col-md-7 transaction__details">
@@ -212,14 +233,11 @@ class TransactionsPage {
    * используя getTransactionHTML
    * */
   renderTransactions(data){
-    // this.clear();
-    console.log(data)
+    if(!data) {
+      return;
+    }
     const contentElement = this.element.querySelector('.content');
     contentElement.innerHTML = '';
-
-    data.forEach(item => {
-      const transactionHTML = this.getTransactionHTML(item);
-      contentElement.insertAdjacentHTML('beforeend', transactionHTML);
-    });
+    contentElement.innerHTML = data.map((item) => this.getTransactionHTML(item)).join('');
   }
 }
