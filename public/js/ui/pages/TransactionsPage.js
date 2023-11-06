@@ -145,6 +145,7 @@ class TransactionsPage {
     Promise.all([promiseAccount, promiseTransaction])
     .then(([account, transactions]) => {
       this.renderTitle(account.name);
+      console.log(transactions)
       this.renderTransactions(transactions);
       console.log(transactions)
     })
@@ -233,6 +234,7 @@ class TransactionsPage {
    * используя getTransactionHTML
    * */
   renderTransactions(data){
+    console.log(data)
     if(!data) {
       return;
     }

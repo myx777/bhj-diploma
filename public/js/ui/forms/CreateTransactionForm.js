@@ -45,6 +45,8 @@ class CreateTransactionForm extends AsyncForm {
    * в котором находится форма
    * */
   onSubmit(data) {
+    console.log(data)
+    debugger
     Transaction.create(data, (err, response) => {
       if (err) {
         console.error("Error fetching accounts:", err);
@@ -55,6 +57,7 @@ class CreateTransactionForm extends AsyncForm {
         App.update();
         App.getModal('newIncome').close();
         App.getModal('newExpense').close();
+        this.element.reset();// Сбрасываем форму
       }
     });
   }
