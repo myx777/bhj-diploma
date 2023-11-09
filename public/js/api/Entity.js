@@ -14,7 +14,6 @@ class Entity {
       responseType: 'json',
       callback,
     };
-    console.log(options)
     createRequest(options);
   }
 
@@ -34,7 +33,6 @@ class Entity {
    * что наследуется от Entity)
    * */
   static create(data, callback) {
-    console.log(data)
     this.request('PUT', data, callback);
   }
 

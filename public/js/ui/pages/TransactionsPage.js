@@ -43,7 +43,7 @@ class TransactionsPage {
 
     if (buttonDeleteTransaction) {
       buttonDeleteTransaction.addEventListener('click', () => {
-        this.removeTransaction(this.lastOptions.account_id);
+        this.removeTransaction(this.lastOptions);
       });
     }
   }
@@ -58,13 +58,12 @@ class TransactionsPage {
    * для обновления приложения
    * */
   removeAccount() {
-    // debugger
     if(this.lastOptions === null) { 
       return;
     };
 
     if (window.confirm('Вы действительно хотите удалить счёт?')) {
-      Account.remove(this.lastOptions.account_id, (err, response) => {
+      Account.remove(this.lastOptions, (err, response) => {
         if (err) {
           console.error("Error removing accounts:", err);
           return;
@@ -86,7 +85,7 @@ class TransactionsPage {
    * */
   removeTransaction() {
     if (window.confirm('Вы действительно хотите удалить эту транзакцию?')) {
-      Transaction.remove(this.lastOptions.account_id, (err, response) => {
+      Transaction.remove(this.lastOptions, (err, response) => {
         if (err) {
           console.error('Error removing transaction:', err);
           return;
@@ -114,7 +113,7 @@ class TransactionsPage {
     const promiseAccount = new Promise(function(resolve, reject) {
       // функция-исполнитель (executor)
       // "певец"
-      Account.get(options.account_id, (err, response) => {
+      Account.get(options, (err, response) => {
         if (err) {
           console.error("Error fetching accounts:", err);
           reject(err);
@@ -129,14 +128,14 @@ class TransactionsPage {
     });
 
     const promiseTransaction = new Promise(function(resolve, reject) {
-      Transaction.list(options.account_id, (err, response) => {
+      Transaction.list(options, (err, response) => {
         if (err) {
           console.error("Error fetching transactions:", err);
           reject(err);
           return;
         }
         if(response.success) {
-          const transaction = response.data;
+          let transaction = response.data;
           resolve(transaction);
         }
       });
@@ -208,7 +207,7 @@ class TransactionsPage {
             <span class="fa fa-money fa-2x"></span>
           </div>
           <div class="transaction__info">
-            <h4 class="transaction__title">Новый будильник</h4>
+            <h4 class="transaction__title">${item.name}</h4>
             <!-- дата -->
             <div class="transaction__date">${this.formatDate(item.created_at)}</div>
           </div>
