@@ -10,13 +10,14 @@ class TransactionsPage {
    * Сохраняет переданный элемент и регистрирует события
    * через registerEvents()
    * */
-  constructor( element ) {
-    if(!element) {
+  constructor(element) {
+    if (!element) {
       throw new Error('Empty element!');
     }
 
     this.element = element;
     this.lastOptions = null;
+    this.transactionId = null;
     this.registerEvents();
   }
 
@@ -35,16 +36,27 @@ class TransactionsPage {
    * */
   registerEvents() {
     const buttonDeleteAccount = this.element.querySelector('.remove-account');
-    const buttonDeleteTransaction = this.element.querySelector('.transaction__remove');
-
-    buttonDeleteAccount.addEventListener('click', () => {
-      this.removeAccount();
-    });
-
-    if (buttonDeleteTransaction) {
-      buttonDeleteTransaction.addEventListener('click', () => {
-        this.removeTransaction();
+    const buttonDeleteTransaction = this.element.querySelectorAll('.transaction__remove');
+    
+    if (buttonDeleteAccount) {
+      buttonDeleteAccount.addEventListener('click', () => {
+        this.removeAccount();
       });
+    }
+  
+    if (buttonDeleteTransaction) {
+      buttonDeleteTransaction.forEach(button => {
+
+        button.addEventListener('click', () => {
+          this.transactionId = { 
+            id: button.dataset.id,
+          };
+          
+          this.removeTransaction();
+        });
+
+      });
+
     }
   }
 
@@ -83,9 +95,11 @@ class TransactionsPage {
    * либо обновляйте текущую страницу (метод update) и виджет со счетами
    * */
   removeTransaction() {
+    if(this.transactionId === null) {
+      return;
+    }
     if (window.confirm('Вы действительно хотите удалить эту транзакцию?')) {
-      console.log(this.lastOptions)
-      Transaction.remove(this.lastOptions, (err, response) => {
+      Transaction.remove(this.transactionId, (err, response) => {
         if (err) {
           console.error('Error removing transaction:', err);
           return;
@@ -150,7 +164,6 @@ class TransactionsPage {
     .catch((error) => {
       console.error("Error in Promise.all:", error);
     });
-
   }
 
   /**
@@ -164,6 +177,7 @@ class TransactionsPage {
     this.renderTransactions();
     this.renderTitle('Название счёта');
     this.lastOptions = null;
+    this.transactionId = null;
   }
 
   /**
