@@ -46,7 +46,6 @@ class CreateTransactionForm extends AsyncForm {
    * */
   onSubmit(data) {
     console.log(data)
-    debugger
     Transaction.create(data, (err, response) => {
       if (err) {
         console.error("Error fetching accounts:", err);

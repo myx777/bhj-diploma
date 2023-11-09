@@ -10,13 +10,10 @@ const createRequest = (options = {}) => {
 
   const urlGet = new URL(options.url, 'http://localhost:8000');
 
-  // Проверяем метод запроса
-  if (fetchOptions.method === 'GET') {
-    // Если метод GET, то формируем URL с параметрами из data
     for (const key in options.data) {
       urlGet.searchParams.set(key, options.data[key]);
     }
-  } else if (fetchOptions.method !== 'GET') {
+  if (fetchOptions.method !== 'GET') {
     // Если метод не GET, то формируем тело запроса (body)
     const formData = new FormData();
     for (const key in options.data) {

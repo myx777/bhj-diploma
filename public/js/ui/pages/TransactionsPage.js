@@ -43,7 +43,7 @@ class TransactionsPage {
 
     if (buttonDeleteTransaction) {
       buttonDeleteTransaction.addEventListener('click', () => {
-        this.removeTransaction(this.lastOptions);
+        this.removeTransaction();
       });
     }
   }
@@ -68,7 +68,6 @@ class TransactionsPage {
           console.error("Error removing accounts:", err);
           return;
         }
-        console.log(response)
         if(response.success) {
           App.updateWidgets();
           App.updateForms();
@@ -85,6 +84,7 @@ class TransactionsPage {
    * */
   removeTransaction() {
     if (window.confirm('Вы действительно хотите удалить эту транзакцию?')) {
+      console.log(this.lastOptions)
       Transaction.remove(this.lastOptions, (err, response) => {
         if (err) {
           console.error('Error removing transaction:', err);
@@ -144,9 +144,8 @@ class TransactionsPage {
     Promise.all([promiseAccount, promiseTransaction])
     .then(([account, transactions]) => {
       this.renderTitle(account.name);
-      console.log(transactions)
       this.renderTransactions(transactions);
-      console.log(transactions)
+      this.registerEvents();
     })
     .catch((error) => {
       console.error("Error in Promise.all:", error);
@@ -233,7 +232,6 @@ class TransactionsPage {
    * используя getTransactionHTML
    * */
   renderTransactions(data){
-    console.log(data)
     if(!data) {
       return;
     }
