@@ -112,6 +112,7 @@ class AccountsWidget {
 
     element.classList.add('active');
     App.showPage( 'transactions', { account_id: element.dataset.id });
+    // this.update();
   }
 
   /**

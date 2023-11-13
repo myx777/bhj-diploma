@@ -18,6 +18,7 @@ class TransactionsPage {
     this.element = element;
     this.lastOptions = null;
     this.transactionId = null;
+
     this.registerEvents();
   }
 
@@ -37,26 +38,18 @@ class TransactionsPage {
   registerEvents() {
     const buttonDeleteAccount = this.element.querySelector('.remove-account');
     const buttonDeleteTransaction = this.element.querySelectorAll('.transaction__remove');
-    
+  
     if (buttonDeleteAccount) {
-      buttonDeleteAccount.addEventListener('click', () => {
-        this.removeAccount();
-      });
+      buttonDeleteAccount.addEventListener('click', this.removeAccount.bind(this));
     }
   
     if (buttonDeleteTransaction) {
       buttonDeleteTransaction.forEach(button => {
-
         button.addEventListener('click', () => {
-          this.transactionId = { 
-            id: button.dataset.id,
-          };
-          
+          this.transactionId = { id: button.dataset.id };
           this.removeTransaction();
         });
-
       });
-
     }
   }
 
@@ -73,18 +66,20 @@ class TransactionsPage {
     if(this.lastOptions === null) { 
       return;
     };
-
+    console.log(this.lastOptions)
     if (window.confirm('Вы действительно хотите удалить счёт?')) {
       Account.remove(this.lastOptions, (err, response) => {
         if (err) {
           console.error("Error removing accounts:", err);
           return;
         }
+        
         if(response.success) {
           App.updateWidgets();
           App.updateForms();
-        }
+        } 
       });
+      this.clear();
     }
   }
 
@@ -111,60 +106,65 @@ class TransactionsPage {
     }
   }
 
-  /**
-   * С помощью Account.get() получает название счёта и отображает
-   * его через TransactionsPage.renderTitle.
-   * Получает список Transaction.list и полученные данные передаёт
-   * в TransactionsPage.renderTransactions()
-   * */
-  render(options){
-    if(!options) { 
-      return;
-    };
 
-    this.lastOptions = options;
+/**
+ * С помощью Account.get() получает название счёта и отображает
+ * его через TransactionsPage.renderTitle.
+ * Получает список Transaction.list и полученные данные передаёт
+ * в TransactionsPage.renderTransactions()
+ * */
+render(options) {
+  if (!options) {
+    return;
+  }
 
-    const promiseAccount = new Promise(function(resolve, reject) {
-      // функция-исполнитель (executor)
-      // "певец"
-      Account.get(options, (err, response) => {
-        if (err) {
-          console.error("Error fetching accounts:", err);
-          reject(err);
-          return;
-        }
-  
-        if(response.success) {
-          const account = response.data;
-          resolve(account);
-        }
-      });
+  this.lastOptions = options;
+
+  const accountPromise = new Promise((resolve, reject) => {
+    Account.get(options, (err, response) => {
+      if (err) {
+        console.error("Ошибка при получении данных о счете:", err);
+        reject(err);
+        return;
+      }
+
+      if (response.success) {
+        const accounts = response.data;
+        accounts.forEach(account => {
+          if(options.account_id === account.id) {
+            resolve(account.name);
+          }
+          
+        });
+        
+      }
     });
+  });
 
-    const promiseTransaction = new Promise(function(resolve, reject) {
-      Transaction.list(options, (err, response) => {
-        if (err) {
-          console.error("Error fetching transactions:", err);
-          reject(err);
-          return;
-        }
-        if(response.success) {
-          let transaction = response.data;
-          resolve(transaction);
-        }
-      });
+  const transactionPromise = new Promise((resolve, reject) => {
+    Transaction.list(options, (err, response) => {
+      if (err) {
+        console.error("Error fetching transactions:", err);
+        reject(err);
+        return;
+      }
+      if (response.success) {
+        const transactions = response.data;
+        resolve(transactions);
+      }
     });
+  });
 
-    Promise.all([promiseAccount, promiseTransaction])
+  Promise.all([accountPromise, transactionPromise])
     .then(([account, transactions]) => {
-      this.renderTitle(account.name);
+      this.renderTitle(account);
       this.renderTransactions(transactions);
       this.registerEvents();
     })
     .catch((error) => {
-      console.error("Error in Promise.all:", error);
+      console.error("Ошибка в Promise.all:", error);
     });
-  }
+}
 
   /**
    * Очищает страницу. Вызывает
@@ -187,6 +187,7 @@ class TransactionsPage {
     if(!name) {
       return;
     }
+
     const contentTitle = this.element.querySelector('.content-title');
     contentTitle.textContent = name;
   }

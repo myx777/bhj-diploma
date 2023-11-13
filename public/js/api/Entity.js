@@ -41,6 +41,7 @@ class Entity {
    * (в зависимости от того, что наследуется от Entity)
    * */
   static remove(data, callback ) {
+    console.log(data)
     this.request('DELETE', data, callback);
   }
 }
