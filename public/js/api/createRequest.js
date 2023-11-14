@@ -21,15 +21,12 @@ const createRequest = (options = {}) => {
     const formData = new FormData();
     for (const key in options.data) {
       formData.append(key, options.data[key]);
-      console.log(formData)
     }
-    console.log(options)
-    console.log(options.data)
-    console.log(formData)
+
     // Устанавливаем тело запроса
     fetchOptions.body = formData;
   }
-  console.log(fetchOptions)
+  
   // Выполняем AJAX-запрос с использованием fetch
   fetch(urlGet.href, fetchOptions)
     .then((response) => {

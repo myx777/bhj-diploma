@@ -66,9 +66,10 @@ class TransactionsPage {
     if(this.lastOptions === null) { 
       return;
     };
-    console.log(this.lastOptions)
+
     if (window.confirm('Вы действительно хотите удалить счёт?')) {
-      Account.remove(this.lastOptions, (err, response) => {
+      const accountId = { id: this.lastOptions.account_id };
+      Account.remove(accountId, (err, response) => {
         if (err) {
           console.error("Error removing accounts:", err);
           return;
