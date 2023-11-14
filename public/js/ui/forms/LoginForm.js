@@ -17,5 +17,5 @@ class LoginForm extends AsyncForm {
         modal.close();
       }
     });
-  } 
+  }
 }

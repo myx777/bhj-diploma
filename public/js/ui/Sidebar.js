@@ -18,13 +18,13 @@ class Sidebar {
    * при нажатии на кнопку .sidebar-toggle
    * */
   static initToggleButton() {
-    const burgerMenu = document.querySelector(".sidebar-mini");
-    const buttonBurgerMenu = document.querySelector('[data-toggle="push-menu"]');//кнопка по атрибутному селектору
-    
+    const burgerMenu = document.querySelector('.sidebar-mini');
+    const buttonBurgerMenu = document.querySelector('[data-toggle="push-menu"]');// кнопка по атрибутному селектору
+
     buttonBurgerMenu.addEventListener('click', (event) => {
       event.preventDefault();
-      burgerMenu.classList.toggle("sidebar-collapse");
-      burgerMenu.classList.toggle("sidebar-open");
+      burgerMenu.classList.toggle('sidebar-collapse');
+      burgerMenu.classList.toggle('sidebar-open');
     });
   }
 
@@ -39,7 +39,7 @@ class Sidebar {
     const loginButton = document.querySelector('.menu-item_login');
     const registerButton = document.querySelector('.menu-item_register');
     const logoutButton = document.querySelector('.menu-item_logout');
-  
+
     loginButton.addEventListener('click', (event) => {
       event.preventDefault();
       const modalLogin = App.getModal('login');
@@ -47,7 +47,7 @@ class Sidebar {
         modalLogin.open();
       }
     });
-  
+
     registerButton.addEventListener('click', (event) => {
       event.preventDefault();
       const modalRegister = App.getModal('register');
@@ -55,7 +55,7 @@ class Sidebar {
         modalRegister.open();
       }
     });
-  
+
     logoutButton.addEventListener('click', (event) => {
       event.preventDefault();
       User.logout((err, response) => {

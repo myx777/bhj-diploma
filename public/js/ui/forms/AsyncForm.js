@@ -13,8 +13,8 @@ class AsyncForm {
    * через registerEvents()
    * */
   constructor(element) {
-    if(!element) {
-      throw new Error('Err: Element does not exist!')
+    if (!element) {
+      throw new Error('Err: Element does not exist!');
     }
     this.element = element;
     this.registerEvents();
@@ -43,7 +43,7 @@ class AsyncForm {
     return Object.fromEntries(formData.entries());
   }
 
-  onSubmit(options){
+  onSubmit(options) {
 
   }
 

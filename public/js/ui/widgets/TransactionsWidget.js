@@ -11,10 +11,11 @@ class TransactionsWidget {
    * Если переданный элемент не существует,
    * необходимо выкинуть ошибку.
    * */
-  constructor( element ) {
+  constructor(element) {
     this.element = element;
     this.registerEvents();
   }
+
   /**
    * Регистрирует обработчики нажатия на
    * кнопки «Новый доход» и «Новый расход».

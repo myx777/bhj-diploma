@@ -13,13 +13,13 @@ class AccountsWidget {
    * Если переданный элемент не существует,
    * необходимо выкинуть ошибку.
    * */
-  constructor( element ) {
-    if(!element) {
+  constructor(element) {
+    if (!element) {
       throw new Error('Empty element!');
     }
 
     this.element = element;
-    
+
     this.update();
     this.registerEvents();
   }
@@ -41,9 +41,9 @@ class AccountsWidget {
 
     this.element.addEventListener('click', (event) => {
       event.preventDefault();
-      const target = event.target;
-      const closestAccount = target.closest('li.account');//иначе он считывает элемент, по которому нажали, а не всю кнопку
-      if(!closestAccount) {
+      const { target } = event;
+      const closestAccount = target.closest('li.account');// иначе он считывает элемент, по которому нажали, а не всю кнопку
+      if (!closestAccount) {
         return;
       }
       if (closestAccount.classList.contains('account')) {
@@ -64,25 +64,25 @@ class AccountsWidget {
    * */
   update() {
     const user = User.current();
-  
+
     if (!user) {
-      console.log("User is not logged in. Exiting update.");
+      console.log('User is not logged in. Exiting update.');
       return;
     }
-  
-    Account.list({}, (err, response) => {//передаю пустой объект
+
+    Account.list({}, (err, response) => { // передаю пустой объект
       if (err) {
-        console.error("Error fetching accounts:", err);
+        console.error('Error fetching accounts:', err);
         return;
       }
 
       const accounts = response.data;
-  
+
       this.clear();
       this.renderItems(accounts);
     });
   }
- 
+
   /**
    * Очищает список ранее отображённых счетов.
    * Для этого необходимо удалять все элементы .account
@@ -91,7 +91,7 @@ class AccountsWidget {
   clear() {
     const accounts = this.element.querySelectorAll('.account');
 
-    accounts.forEach(account => {
+    accounts.forEach((account) => {
       account.remove();
     });
   }
@@ -103,15 +103,15 @@ class AccountsWidget {
    * счёта класс .active.
    * Вызывает App.showPage( 'transactions', { account_id: id_счёта });
    * */
-  onSelectAccount( element ) {
+  onSelectAccount(element) {
     const accounts = this.element.querySelectorAll('.account');
 
-    accounts.forEach(account => {
+    accounts.forEach((account) => {
       account.classList.remove('active');
     });
 
     element.classList.add('active');
-    App.showPage( 'transactions', { account_id: element.dataset.id });
+    App.showPage('transactions', { account_id: element.dataset.id });
     // this.update();
   }
 
@@ -120,7 +120,7 @@ class AccountsWidget {
    * отображения в боковой колонке.
    * item - объект с данными о счёте
    * */
-  getAccountHTML(item){
+  getAccountHTML(item) {
     return `
       <li class="account" data-id="${item.id}">
          <a href="#">
@@ -128,7 +128,7 @@ class AccountsWidget {
             <span>${item.sum}</span>
          </a>
       </li>
-    `
+    `;
   }
 
   /**
@@ -137,7 +137,7 @@ class AccountsWidget {
    * AccountsWidget.getAccountHTML HTML-код элемента
    * и добавляет его внутрь элемента виджета
    * */
-  renderItems(data){
+  renderItems(data) {
     this.clear(); // Очищаем счета перед добавлением новых
     data.forEach((item) => {
       const accountHTML = this.getAccountHTML(item);

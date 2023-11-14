@@ -1,6 +1,5 @@
-describe("UI/Класс App", function() {
-
-  it("Определён", function() {
+describe('UI/Класс App', () => {
+  it('Определён', () => {
     expect(App).to.be.a('function');
   });
 });

@@ -8,11 +8,11 @@ const createRequest = (options = {}) => {
     method: options.method, // Метод запроса (GET, POST, и так далее)
   };
 
-    // Используем относительный путь или конфигурируемый базовый URL
-    const baseUrl = window.API_BASE_URL || 'http://localhost:8000';
-    const urlGet = new URL(options.url, baseUrl);
-  
-  if(fetchOptions.method === 'GET') {
+  // Используем относительный путь или конфигурируемый базовый URL
+  const baseUrl = window.API_BASE_URL || 'http://localhost:8000';
+  const urlGet = new URL(options.url, baseUrl);
+
+  if (fetchOptions.method === 'GET') {
     for (const key in options.data) {
       urlGet.searchParams.set(key, options.data[key]);
     }
@@ -26,7 +26,7 @@ const createRequest = (options = {}) => {
     // Устанавливаем тело запроса
     fetchOptions.body = formData;
   }
-  
+
   // Выполняем AJAX-запрос с использованием fetch
   fetch(urlGet.href, fetchOptions)
     .then((response) => {

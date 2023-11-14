@@ -12,8 +12,8 @@ class Modal {
    * необходимо выкинуть ошибку.
    * */
   constructor(element) {
-    if(!element) {
-      throw new Error('Empty element')
+    if (!element) {
+      throw new Error('Empty element');
     }
 
     this.element = element;
@@ -27,7 +27,7 @@ class Modal {
    * */
   registerEvents() {
     const closeButtons = document.querySelectorAll('[data-dismiss="modal"]');
-    for(const key of Array.from(closeButtons)) {
+    for (const key of Array.from(closeButtons)) {
       key.addEventListener('click', (e) => {
         e.preventDefault();
         this.onClose(e);
@@ -42,6 +42,7 @@ class Modal {
   onClose(e) {
     this.close(e);
   }
+
   /**
    * Открывает окно: устанавливает CSS-свойство display
    * со значением «block»
@@ -49,10 +50,11 @@ class Modal {
   open() {
     this.element.style.display = 'block';
   }
+
   /**
    * Закрывает окно: удаляет CSS-свойство display
    * */
-  close(){
+  close() {
     this.element.style.display = 'none';
   }
 }

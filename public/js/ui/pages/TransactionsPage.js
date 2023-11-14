@@ -38,13 +38,13 @@ class TransactionsPage {
   registerEvents() {
     const buttonDeleteAccount = this.element.querySelector('.remove-account');
     const buttonDeleteTransaction = this.element.querySelectorAll('.transaction__remove');
-  
+
     if (buttonDeleteAccount) {
       buttonDeleteAccount.addEventListener('click', this.removeAccount.bind(this));
     }
-  
+
     if (buttonDeleteTransaction) {
-      buttonDeleteTransaction.forEach(button => {
+      buttonDeleteTransaction.forEach((button) => {
         button.addEventListener('click', () => {
           this.transactionId = { id: button.dataset.id };
           this.removeTransaction();
@@ -63,22 +63,22 @@ class TransactionsPage {
    * для обновления приложения
    * */
   removeAccount() {
-    if(this.lastOptions === null) { 
+    if (this.lastOptions === null) {
       return;
-    };
+    }
 
     if (window.confirm('Вы действительно хотите удалить счёт?')) {
       const accountId = { id: this.lastOptions.account_id };
       Account.remove(accountId, (err, response) => {
         if (err) {
-          console.error("Error removing accounts:", err);
+          console.error('Error removing accounts:', err);
           return;
         }
-        
-        if(response.success) {
+
+        if (response.success) {
           App.updateWidgets();
           App.updateForms();
-        } 
+        }
       });
       this.clear();
     }
@@ -91,7 +91,7 @@ class TransactionsPage {
    * либо обновляйте текущую страницу (метод update) и виджет со счетами
    * */
   removeTransaction() {
-    if(this.transactionId === null) {
+    if (this.transactionId === null) {
       return;
     }
     if (window.confirm('Вы действительно хотите удалить эту транзакцию?')) {
@@ -100,72 +100,69 @@ class TransactionsPage {
           console.error('Error removing transaction:', err);
           return;
         }
-        if(response.success) {
+        if (response.success) {
           App.update();
         }
       });
     }
   }
 
-
-/**
+  /**
  * С помощью Account.get() получает название счёта и отображает
  * его через TransactionsPage.renderTitle.
  * Получает список Transaction.list и полученные данные передаёт
  * в TransactionsPage.renderTransactions()
  * */
-render(options) {
-  if (!options) {
-    return;
+  render(options) {
+    if (!options) {
+      return;
+    }
+
+    this.lastOptions = options;
+
+    const accountPromise = new Promise((resolve, reject) => {
+      Account.get(options, (err, response) => {
+        if (err) {
+          console.error('Ошибка при получении данных о счете:', err);
+          reject(err);
+          return;
+        }
+
+        if (response.success) {
+          const accounts = response.data;
+          accounts.forEach((account) => {
+            if (options.account_id === account.id) {
+              resolve(account.name);
+            }
+          });
+        }
+      });
+    });
+
+    const transactionPromise = new Promise((resolve, reject) => {
+      Transaction.list(options, (err, response) => {
+        if (err) {
+          console.error('Error fetching transactions:', err);
+          reject(err);
+          return;
+        }
+        if (response.success) {
+          const transactions = response.data;
+          resolve(transactions);
+        }
+      });
+    });
+
+    Promise.all([accountPromise, transactionPromise])
+      .then(([account, transactions]) => {
+        this.renderTitle(account);
+        this.renderTransactions(transactions);
+        this.registerEvents();
+      })
+      .catch((error) => {
+        console.error('Ошибка в Promise.all:', error);
+      });
   }
-
-  this.lastOptions = options;
-
-  const accountPromise = new Promise((resolve, reject) => {
-    Account.get(options, (err, response) => {
-      if (err) {
-        console.error("Ошибка при получении данных о счете:", err);
-        reject(err);
-        return;
-      }
-
-      if (response.success) {
-        const accounts = response.data;
-        accounts.forEach(account => {
-          if(options.account_id === account.id) {
-            resolve(account.name);
-          }
-          
-        });
-        
-      }
-    });
-  });
-
-  const transactionPromise = new Promise((resolve, reject) => {
-    Transaction.list(options, (err, response) => {
-      if (err) {
-        console.error("Error fetching transactions:", err);
-        reject(err);
-        return;
-      }
-      if (response.success) {
-        const transactions = response.data;
-        resolve(transactions);
-      }
-    });
-  });
-
-  Promise.all([accountPromise, transactionPromise])
-    .then(([account, transactions]) => {
-      this.renderTitle(account);
-      this.renderTransactions(transactions);
-      this.registerEvents();
-    })
-    .catch((error) => {
-      console.error("Ошибка в Promise.all:", error);
-    });
-}
 
   /**
    * Очищает страницу. Вызывает
@@ -184,8 +181,8 @@ render(options) {
   /**
    * Устанавливает заголовок в элемент .content-title
    * */
-  renderTitle(name){
-    if(!name) {
+  renderTitle(name) {
+    if (!name) {
       return;
     }
 
@@ -197,7 +194,7 @@ render(options) {
    * Форматирует дату в формате 2019-03-10 03:20:41 (строка)
    * в формат «10 марта 2019 г. в 03:20»
    * */
-  formatDate(date){
+  formatDate(date) {
     const options = {
       weekday: 'long',
       year: 'numeric',
@@ -214,7 +211,7 @@ render(options) {
    * Формирует HTML-код транзакции (дохода или расхода).
    * item - объект с информацией о транзакции
    * */
-  getTransactionHTML(item){
+  getTransactionHTML(item) {
     return `
       <div class="transaction transaction_${item.type} row">
           <div class="col-md-7 transaction__details">
@@ -240,15 +237,15 @@ render(options) {
             </button>
         </div>
       </div>
-    `
+    `;
   }
 
   /**
    * Отрисовывает список транзакций на странице
    * используя getTransactionHTML
    * */
-  renderTransactions(data){
-    if(!data) {
+  renderTransactions(data) {
+    if (!data) {
       return;
     }
     const contentElement = this.element.querySelector('.content');
